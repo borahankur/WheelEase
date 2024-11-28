@@ -35,8 +35,8 @@ const AmbulancePage = () => {
         }
 
         getUserLocation()
-
-        mapboxgl.accessToken = "pk.eyJ1IjoiYW5rdXJib3JhaCIsImEiOiJjbTNiaDRveXUwY2YyMmtzNnB6N2hoaDBqIn0.XkvR9BjDgO3Oay1N8H79XA"
+        const accessToken = import.meta.env.VITE_MAPBOX_TOKEN
+        mapboxgl.accessToken = accessToken
         if (mapContainerRef.current && !mapRef.current) {
             mapRef.current = new mapboxgl.Map({
                 container: mapContainerRef.current,
