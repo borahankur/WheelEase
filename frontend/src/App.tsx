@@ -21,6 +21,8 @@ import ConfirmationPage from "./pages/hospital/ConfirmationPage"
 import EmployeeWelPage from "./pages/employee/EmployeeWelPage"
 import DoctorWelPage from "./pages/doctor/DoctorWelPage"
 import NurseWelPage from "./pages/nurse/NurseWelPage"
+import ChatbotPage from "./pages/chatbot/ChatbotPage"
+import ErrorPage from "./pages/404/ErrorPage"
 
 const App = () => {
   return (
@@ -41,7 +43,7 @@ const App = () => {
         <Route path="/nurse" element={<NursePage />} />
         <Route path="/nursePage" element={<NurseWelPage />} />
         <Route path="/ambulance" element={<AmbulancePage />} />
-
+        <Route path="/chatbot" element={<ChatbotPage />} />
         <Route path="/hospital/:hospitalId" element={<HospitalPage />} />
 
         <Route path="/hospital/:hospitalId/wheelchair" element={<WheelChairPage />} />
@@ -51,7 +53,7 @@ const App = () => {
         <Route path="/hospital/:hospitalId/stretcher" element={<StretcherPage />} />
         <Route path="/hospital/:hospitalId/stretcher/booking" element={<StretcherBooking />} />
         <Route path="/hospital/:hospitalId/stretcher/booking/confirm" element={<ConfirmationPage />} />
-        <Route path="*" element={"404 NOT FOUND"} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
       <Toaster />
     </>

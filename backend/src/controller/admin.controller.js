@@ -2,7 +2,6 @@ import { Employee } from "../models/employee.model.js";
 import { Doctor } from "../models/doctor.model.js";
 import { Nurse } from "../models/nurse.model.js";
 import { Hospital } from "../models/hospital.model.js";
-import { User } from '../models/user.model.js'
 
 const uploadToCloudinary = async (file) => {
     try {

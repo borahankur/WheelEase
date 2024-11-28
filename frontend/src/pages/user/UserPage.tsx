@@ -4,13 +4,21 @@ import { UserButton, useUser } from '@clerk/clerk-react'
 import { useHospitalStore } from '@/store/useHospitalStore'
 import { useEffect } from 'react'
 
+
 function UserPage() {
 
-    const { user } = useUser()
+    const { user, isSignedIn } = useUser()
     const { hospitals, getAllHospitals } = useHospitalStore()
+
     useEffect(() => {
         getAllHospitals()
     }, [getAllHospitals])
+
+    if(!isSignedIn)
+    {
+
+    }
+
     return (
         <>
             <main className="bg-customGreen w-screen min-h-screen overflow-y-hidden flex flex-col justify-between">
@@ -20,7 +28,6 @@ function UserPage() {
                         <Link to='/options'>
                             <FaArrowLeft className='text-2xl' />
                         </Link>
-
                     </div>
 
                     {/* Title in the Center */}
@@ -30,7 +37,9 @@ function UserPage() {
 
                     {/* Chatbot Icon on the Right */}
                     <div className="pt-5">
-                        <img src={'/chatbot.png'} alt="chatbot" className="size-16 cursor-pointer" />
+                        <Link to={'/chatbot'}>
+                            <img src={'/chatbot.png'} alt="chatbot" className="size-16 cursor-pointer" />
+                        </Link>
                     </div>
                 </div>
 

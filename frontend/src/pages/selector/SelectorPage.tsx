@@ -29,7 +29,7 @@ const SelectorPage = () => {
                 <Link to={'/nurse'} className="flex justify-center">
                     <img src={'/Nurse.png'} alt='Nurse' className="size-32 md:size-40" />
                 </Link>
-                <Link to={'/helpdesk'} className="flex justify-center">
+                <Link to={'/chatbot'} className="flex justify-center">
                     <img src={'/Helpbutton.png'} alt='Helpbutton' className="size-32 md:size-40" />
                 </Link>
                 <Link to={'/doctor'} className="flex justify-center">

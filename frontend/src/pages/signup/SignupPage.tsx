@@ -7,7 +7,9 @@ import { FaLock } from "react-icons/fa";
 import { CiCircleCheck } from "react-icons/ci";
 import { FaUser } from 'react-icons/fa6'
 import { useAuthStore } from '@/store/useAuthStore'
-// import { useClerk } from '@clerk/clerk-react'
+import { useSignUp } from '@clerk/clerk-react'
+import { axiosInstance } from '@/lib/axios'
+
 
 const nameSchema = z.string().min(2, { message: "Name must be at least 2 letters long" }).regex(/[a-zA-Z]+$/, { message: 'Name must only contain letters' })
 
@@ -24,8 +26,8 @@ const passwordSchema = z.string().min(8).refine((password) => {
 const emailSchema = z.string().email({ message: "Invalid email address" })
 
 const SignupPage = () => {
-    // const clerk = useClerk()
-    const { signup, isAuthenticated } = useAuthStore()
+    const { signUp } = useSignUp()
+    const { isAuthenticated } = useAuthStore()
     const navigate = useNavigate()
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
@@ -37,11 +39,10 @@ const SignupPage = () => {
     const [error, setError] = useState('')
 
     useEffect(() => {
-        if(isAuthenticated)
-        {
+        if (isAuthenticated) {
             navigate('/user')
         }
-    },[isAuthenticated,navigate])
+    }, [isAuthenticated, navigate])
 
     const validateNames = (name: String) => {
         try {
@@ -101,12 +102,24 @@ const SignupPage = () => {
     const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         try {
-            await signup(email,password,firstName,lastName)
-            if(isAuthenticated)
-            navigate('/user')
+            const result = await signUp?.create({
+                emailAddress: email,
+                password: password,
+                firstName: firstName,
+                lastName: lastName,
+            })
+            if (result?.status === "complete") {
+                const userId = result.createdUserId
+                const response = await axiosInstance.post('/auth/createUser', {userId, firstName, lastName })
+                if(response.data)
+                {
+                    console.log("User created successfully")
+                    navigate('/user')
+                }
+            }
         } catch (error) {
-            throw error;            
-        }    
+            console.log(error)
+        }
     }
 
     return (

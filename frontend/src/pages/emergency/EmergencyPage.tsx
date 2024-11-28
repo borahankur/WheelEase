@@ -29,17 +29,12 @@ const EmergencyPage = () => {
             <div className="flex-1 pt-16 overflow-hidden">
                 <div className='flex justify-center p-6 items-center'>
                     <Link to='/ambulance'>
-                        <img src={'/Ambulance.png'} alt="ambulance" className="size-36"/>
+                        <img src={'/Ambulance.png'} alt="ambulance" className="size-36" />
                     </Link>
                 </div>
                 <div className='flex justify-around p-6 items-center'>
-                    <Link to='/wheelchair'>
-                        <img src={'/wheelchair2.png'} alt="wheelchair" className="size-36"/>
-                    </Link>
-
-                    <Link to='/stretcher'>
-                        <img src={'/Stretcher.png'} alt="stretcher" className="size-36"/>
-                    </Link>
+                    <img src={'/wheelchair2.png'} alt="wheelchair" className="size-36" />
+                    <img src={'/Stretcher.png'} alt="stretcher" className="size-36" />
                 </div>
 
                 <div className='px-5 mt-10'>

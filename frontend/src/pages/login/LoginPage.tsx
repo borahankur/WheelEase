@@ -6,6 +6,7 @@ import SignInOAuthButtons from '@/components/SignInOAuthButtons';
 import { IoMail } from 'react-icons/io5';
 import { CiCircleCheck } from 'react-icons/ci';
 import { useAuthStore } from '@/store/useAuthStore';
+import { useSignIn } from '@clerk/clerk-react';
 
 const passwordSchema = z.string().min(8).refine((password) => {
     const hasUppercase = /[A-Z]/.test(password);
@@ -21,7 +22,8 @@ const passwordSchema = z.string().min(8).refine((password) => {
 const emailSchema = z.string().email({ message: "Invalid email address" })
 
 const LoginPage = () => {
-    const { isAuthenticated, login } = useAuthStore()
+    const { signIn } = useSignIn()
+    const { isAuthenticated } = useAuthStore()
     const navigate = useNavigate()
     const [error, setError] = useState('');
     const [email, setEmail] = useState('')
@@ -69,9 +71,20 @@ const LoginPage = () => {
         }
     };
 
-    const handleLogin = async(e: React.FormEvent<HTMLFormElement>) => {
+    const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        await login(email,password)
+        try {
+            const result = await signIn?.create({
+                identifier: email,
+                password: password,
+            })
+            if(result?.status === "complete")
+            {
+                navigate('/user')
+            }
+        } catch (error) {
+            console.log("error in signing in the user")
+        }
     };
 
     return (

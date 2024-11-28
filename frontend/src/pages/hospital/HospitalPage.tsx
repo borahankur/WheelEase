@@ -46,7 +46,9 @@ const HospitalPage = () => {
 
           {/* Chatbot Icon on the Right */}
           <div className="pt-5">
-            <img src={'/chatbot.png'} alt="chatbot" className="size-16 cursor-pointer" />
+            <Link to={'/chatbot'}>
+              <img src={'/chatbot.png'} alt="chatbot" className="size-16 cursor-pointer" />
+            </Link>
           </div>
         </div>
 
@@ -73,7 +75,7 @@ const HospitalPage = () => {
         </div>
         {/* Carousel for */}
         <div className="relative w-full overflow-hidden py-2">
-          <div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentAd * 100}%)`}}>
+          <div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentAd * 100}%)` }}>
             {adverts.map((advert, index) => (
               <div key={index} className="w-full flex-shrink-0 py-3 px-4">
                 <img

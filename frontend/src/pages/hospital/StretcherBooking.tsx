@@ -3,7 +3,7 @@ import { useHospitalStore } from "@/store/useHospitalStore"
 import { useUser } from "@clerk/clerk-react"
 import { useEffect, useState } from "react"
 import { FaArrowLeft } from "react-icons/fa6"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 const StretcherBooking = () => {
 
@@ -58,7 +58,9 @@ const StretcherBooking = () => {
                     <span className="border-b-4 border-black rounded-sm">WH</span>EELCHAIR
                 </h1>
                 <div className="pt-5">
-                    <img src={'/chatbot.png'} alt="chatbot" className="size-16 cursor-pointer" />
+                    <Link to={'/chatbot'}>
+                        <img src={'/chatbot.png'} alt="chatbot" className="size-16 cursor-pointer" />
+                    </Link>
                 </div>
             </div>
             <div className="w-full h-4 bg-bar" />

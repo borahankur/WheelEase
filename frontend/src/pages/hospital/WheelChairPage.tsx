@@ -44,7 +44,9 @@ const WheelChairPage = () => {
           <span className="border-b-4 border-black rounded-sm">WH</span>EELCHAIR
         </h1>
         <div className="pt-5">
-          <img src={'/chatbot.png'} alt="chatbot" className="size-16 cursor-pointer" />
+          <Link to={'/chatbot'}>
+            <img src={'/chatbot.png'} alt="chatbot" className="size-16 cursor-pointer" />
+          </Link>
         </div>
       </div>
 

@@ -44,7 +44,9 @@ function StretcherPage() {
                         <span className="border-b-4 border-black rounded-sm">ST</span>RETCHER
                     </h1>
                     <div className="pt-5">
-                        <img src={'/chatbot.png'} alt="chatbot" className="size-16 cursor-pointer" />
+                        <Link to={'/chatbot'}>
+                            <img src={'/chatbot.png'} alt="chatbot" className="size-16 cursor-pointer" />
+                        </Link>
                     </div>
                 </div>
                 <div className='w-full h-4 bg-bar'></div>
