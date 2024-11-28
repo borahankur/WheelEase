@@ -3,7 +3,6 @@ import { FaArrowLeft } from 'react-icons/fa6'
 import { UserButton, useUser } from '@clerk/clerk-react'
 import { useHospitalStore } from '@/store/useHospitalStore'
 import { useEffect } from 'react'
-// import { Loader } from 'lucide-react'
 
 function UserPage() {
 

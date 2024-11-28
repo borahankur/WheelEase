@@ -22,20 +22,17 @@ import EmployeeWelPage from "./pages/employee/EmployeeWelPage"
 import DoctorWelPage from "./pages/doctor/DoctorWelPage"
 import NurseWelPage from "./pages/nurse/NurseWelPage"
 
-
-
 const App = () => {
   return (
     <>
       <Routes>
         <Route path="/sso-callback" element={<AuthenticateWithRedirectCallback signUpForceRedirectUrl={'/auth-callback'} />} />
         <Route path="/auth-callback" element={<AuthCallbackPage />} />
-
         <Route path="/" element={<HomePage />} />
         <Route path='/options' element={<SelectorPage />} />
-        <Route path="/emergency" element={<EmergencyPage />}/>
-        <Route path="/signup" element={<SignupPage />}/>
-        <Route path="/login" element={<LoginPage />}/>
+        <Route path="/emergency" element={<EmergencyPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route path="/user" element={<UserPage />} />
         <Route path="/employee" element={<EmployeePage />} />
         <Route path="/employeePage" element={<EmployeeWelPage />} />
@@ -43,17 +40,18 @@ const App = () => {
         <Route path="/doctorPage" element={<DoctorWelPage />} />
         <Route path="/nurse" element={<NursePage />} />
         <Route path="/nursePage" element={<NurseWelPage />} />
-        <Route path="/ambulance" element={<AmbulancePage />}/>
-        <Route path="/hospital/:hospitalId" element={<HospitalPage />}/>
+        <Route path="/ambulance" element={<AmbulancePage />} />
+
+        <Route path="/hospital/:hospitalId" element={<HospitalPage />} />
 
         <Route path="/hospital/:hospitalId/wheelchair" element={<WheelChairPage />} />
         <Route path="/hospital/:hospitalId/wheelchair/booking" element={<WheelChairBooking />} />
         <Route path="/hospital/:hospitalId/wheelchair/booking/confirm" element={<ConfirmationPage />} />
 
         <Route path="/hospital/:hospitalId/stretcher" element={<StretcherPage />} />
-        <Route path="/hospital/:hospitalId/stretcher/booking" element={<StretcherBooking />}/>
+        <Route path="/hospital/:hospitalId/stretcher/booking" element={<StretcherBooking />} />
         <Route path="/hospital/:hospitalId/stretcher/booking/confirm" element={<ConfirmationPage />} />
-
+        <Route path="*" element={"404 NOT FOUND"} />
       </Routes>
       <Toaster />
     </>
